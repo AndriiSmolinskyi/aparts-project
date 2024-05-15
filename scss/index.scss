@@ -1,0 +1,275 @@
+
+@import "./reset";
+@import "./variables";
+@import "./mixins";
+@import "./responsive";
+
+
+@mixin font($fm, $fs, $fw, $col) {
+   font-family: $fm;
+   font-size: $fs;
+   font-weight: $fw;
+   color: $col;
+}
+
+@mixin rwd($min, $max) {
+   @media (min-width: $min) and (max-width: $max) {
+      @content;
+   }
+}
+
+// @include rwd(768px, 1024px){}
+
+// min-width: 768px;
+// max-width: 480px;
+
+// @include rwd(320px, 767px){}
+
+@mixin matit {
+   margin-bottom: 50px;
+
+   @include rwd(481px, 768px) {
+      margin-bottom: 50px;
+   }
+
+   @include rwd(300px, 480px) {
+      margin-bottom: 40px;
+   }
+}
+
+@mixin maimg {
+   margin-bottom: 20px;
+}
+
+@mixin masec {
+   margin-bottom: 90px;
+
+   @include rwd(481px, 768px) {
+      margin-bottom: 70px;
+   }
+
+   @include rwd(300px, 480px) {
+      margin-bottom: 70px;
+   }
+}
+
+.wrapper {
+   max-width: 1440px;
+   padding-right: 135px;
+   padding-left: 135px;
+   margin: 0 auto;
+
+   @include rwd(769px, 1050px) {
+      max-width: 1050px;
+      padding-right: 65px;
+      padding-left: 65px;
+   }
+
+   @include rwd(481px, 768px) {
+      max-width: 768px;
+      padding-right: 34px;
+      padding-left: 34px;
+   }
+
+   @include rwd(300px, 480px) {
+      max-width: 480px;
+      padding-right: 10px;
+      padding-left: 10px;
+   }
+
+}
+
+.header {
+   height: 100px;
+   font-family: sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 150%;
+   letter-spacing: 0.5em;
+   display: flex;
+   align-items: center;
+
+   @include rwd(481px, 768px) {
+      height: 60px;
+   }
+
+   @include rwd(300px, 480px) {
+      height: 60px;
+   }
+}
+
+.first {
+   @include masec;
+
+   h1 {
+      font-family: sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 48px;
+      margin-bottom: 70px;
+
+      @include rwd(300px, 768px) {
+         font-size: 33px;
+         margin-bottom: 50px;
+      }
+   }
+
+
+   img {
+      margin-bottom: 90px;
+
+      @include rwd(481px, 768px) {
+         margin-bottom: 90px;
+      }
+
+      @include rwd(300px, 480px) {
+         margin-bottom: 70px;
+      }
+   }
+
+   .first__descrip__text {
+      width: 50%;
+
+      @include rwd(481px, 768px) {
+         width: 100%;
+      }
+
+      @include rwd(300px, 480px) {
+         width: 100%;
+      }
+   }
+
+}
+
+.title {
+   font-family: sans-serif;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 28px;
+   @include matit;
+}
+
+.text {
+   font-family: sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 19px;
+   line-height: 32px;
+   letter-spacing: 0.05em;
+   color: $color2;
+}
+
+
+img {
+   width: 100%;
+}
+
+.section {
+   @include masec;
+
+   img {
+      margin-bottom: 20px;
+   }
+}
+
+.footer {
+   padding-top: 70px;
+   padding-bottom: 30px;
+   background-color: lightgray;
+
+   @include rwd(481px, 768px) {
+      padding-top: 50px;
+      padding-bottom: 50px;
+   }
+
+   @include rwd(300px, 480px) {
+      padding-top: 50px;
+      padding-bottom: 50px;
+   }
+
+   .copy {
+      text-align: center;
+      margin-top: 15px;
+
+      @include rwd(481px, 768px) {
+         margin-top: 50px;
+      }
+
+      @include rwd(300px, 480px) {
+         margin-top: 50px;
+      }
+   }
+
+   .ctasoc {
+
+      display: flex;
+      justify-content: space-between;
+
+      @include rwd(481px, 768px) {
+         display: flex;
+         flex-direction: column;
+         gap: 30px;
+         align-items: center;
+      }
+
+      @include rwd(300px, 480px) {
+         display: flex;
+         flex-direction: column;
+         gap: 30px;
+         align-items: center;
+      }
+
+      .cta {
+         .foot__title {
+            font-family: sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 48px;
+            margin-bottom: 20px;
+         }
+
+         .contacts {
+            font-family: sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 166%;
+         }
+
+         @include rwd(481px, 768px) {
+            text-align: center;
+         }
+
+         @include rwd(300px, 480px) {
+            text-align: center;
+         }
+      }
+
+      .socials {
+         display: flex;
+         gap: 30px;
+
+         .socials__item {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #565656;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover{
+               opacity: 0.7;
+            }
+           
+            .socimg {
+               color: #565656;
+               font-size: 28px;
+            }
+         }
+      }
+   }
+}
+
+
